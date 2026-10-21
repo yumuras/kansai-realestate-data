@@ -2,7 +2,7 @@
 
 使い方:
     export REINFOLIB_API_KEY=xxxx
-    python -m src.fetch --from-year 2020 --to-year 2025
+    uv run python -m src.fetch --from-year 2020 --to-year 2025
 
 出力: data/raw/osaka_pref_<year>Q<quarter>.json（APIのレスポンスをそのまま保存）
 """

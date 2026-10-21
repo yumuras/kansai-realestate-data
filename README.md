@@ -16,16 +16,17 @@ log(㎡単価) = b0 + b1*駅徒歩分 + b2*築年数 + b3*log(面積) + 区ダ�
 
 ## 手順
 
+[uv](https://docs.astral.sh/uv/) で実行します。初回の `uv run` で仮想環境と依存パッケージが自動で用意されます。
+
 ```bash
-pip install -r requirements.txt
 export REINFOLIB_API_KEY=xxxx        # キーはコミットしない
 
-python -m src.fetch --from-year 2020 --to-year 2025   # data/raw/ にAPIレスポンスを保存
-python -m src.prepare                                 # data/processed/osaka_city_condos.csv
-python -m src.model                                   # outputs/ に係数表・区分別結果・図
+uv run python -m src.fetch --from-year 2020 --to-year 2025   # data/raw/ にAPIレスポンスを保存
+uv run python -m src.prepare                                 # data/processed/osaka_city_condos.csv
+uv run python -m src.model                                   # outputs/ に係数表・区分別結果・図
 ```
 
-APIの結果に駅徒歩分数が含まれていない場合は、不動産情報ライブラリの画面から大阪府のCSVをダウンロードして `data/raw/` に置けば、`src.prepare` がそのまま読み込みます（Shift_JIS）。
+APIキーがなくても、不動産情報ライブラリの画面から大阪府のCSVをダウンロードして `data/raw/` に置けば、`src.fetch` を飛ばして `src.prepare` から実行できます（Shift_JIS）。APIの結果に駅徒歩分数が含まれていない場合もこの方法を使います。
 
 ## 出力
 
@@ -45,7 +46,7 @@ APIの結果に駅徒歩分数が含まれていない場合は、不動産情�
 ## テスト
 
 ```bash
-python -m pytest -q
+uv run pytest -q
 ```
 
 合成データ（徒歩1分で-1.5%になるように作ったもの）で、前処理からモデルまで通して推定値が真の値を再現するかを確かめています。

@@ -5,7 +5,7 @@
 b1 × 100 ≒ 「徒歩1分あたり何%変わるか」。
 
 使い方:
-    python -m src.model
+    uv run python -m src.model
 出力: outputs/ に係数表・区分別の結果・図
 """
 

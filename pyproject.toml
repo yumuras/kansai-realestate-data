@@ -1,0 +1,18 @@
+[project]
+name = "kansai-realestate-data"
+version = "0.1.0"
+description = "大阪市の中古マンションの駅徒歩プレミアム分析"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "pandas>=2.0",
+    "requests>=2.31",
+    "statsmodels>=0.14",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv]
+package = false

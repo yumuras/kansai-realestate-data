@@ -5,7 +5,7 @@
 - data/raw/*.csv   … 不動産情報ライブラリの画面からダウンロードしたCSV（Shift_JIS）
 
 使い方:
-    python -m src.prepare
+    uv run python -m src.prepare
 出力: data/processed/osaka_city_condos.csv
 """
 
